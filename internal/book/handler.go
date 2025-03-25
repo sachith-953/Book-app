@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"book-api/api" // Import the API response helper
-	"book-api/internal/book/service" // Import service only
+	"book-api/api"
+	"book-api/internal/book/service"
 	"github.com/gorilla/mux"
 )
 
