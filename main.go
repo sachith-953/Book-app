@@ -1,26 +1,3 @@
-// package main
-
-// import (
-// 	"book-api/controllers"
-
-// 	"github.com/gin-gonic/gin"
-// )
-
-// func main() {
-// 	// Initialize the Gin router
-// 	router := gin.Default()
-
-// 	// Define the API routes
-// 	router.GET("/books", controllers.GetBooks)
-// 	router.POST("/books", controllers.CreateBook)
-// 	router.GET("/books/:id", controllers.GetBook)
-// 	router.PUT("/books/:id", controllers.UpdateBook)
-// 	router.DELETE("/books/:id", controllers.DeleteBook)
-// 	router.GET("/books/search", controllers.SearchBooks)
-
-// 	// Run the server
-// 	router.Run(":8081")
-// }
 
 package main
 
@@ -90,7 +67,7 @@ func writeBooksToFile(books []Book) error {
 	return nil
 }
 
-// Function to handle unmarshalling the Book entity with custom time parsing
+// Function to handle unmarshaling the Book entity with custom time parsing
 func (b *Book) UnmarshalJSON(data []byte) error {
 	type Alias Book
 	aux := &struct {

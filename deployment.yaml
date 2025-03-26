@@ -14,7 +14,14 @@ spec:
     spec:
       containers:
       - name: book-api
-        image: book-api:latest  # Replace with your image name
+        image: book-api:latest 
         ports:
-        - containerPort: 8080
+        - containerPort: 8081
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
 

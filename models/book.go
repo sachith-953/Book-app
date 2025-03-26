@@ -2,7 +2,7 @@ package models
 
 import "time"
 
-// Book struct defines the structure of the Book entity
+
 type Book struct {
 	BookId          string    `json:"bookId"`
 	AuthorId        string    `json:"authorId"`
