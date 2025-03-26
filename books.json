@@ -1,0 +1,67 @@
+[
+  {
+    "bookId": "bb329a31-6b1e-4daa-87ee-71631aa05866",
+    "authorId": "e0d91f68-a183-477d-8aa4-1f44ccc78a70",
+    "publisherId": "2f7b19e9-b268-4440-a15b-bed8177ed607",
+    "title": "The Great Gatsby",
+    "publicationDate": "1925-04-10",
+    "isbn": "9780743273565",
+    "pages": 180,
+    "genre": "Novel",
+    "description": "Set in the 1920s, this classic novel explores themes of wealth, love, and the American Dream.",
+    "price": 15.99,
+    "quantity": 5
+  },
+  {
+    "bookId": "e13d8ff4-0a9b-44f1-a586-7c77f855ad94",
+    "authorId": "f3b2a7b3-60a3-426d-9b7c-4db70a74f700",
+    "publisherId": "9f2be405-4249-42f6-94bb-b9c5d177ba4c",
+    "title": "1984",
+    "publicationDate": "1949-06-08",
+    "isbn": "9780451524935",
+    "pages": 328,
+    "genre": "Dystopian",
+    "description": "A novel that imagines a totalitarian future where the state controls everything, including thoughts.",
+    "price": 12.99,
+    "quantity": 8
+  },
+  {
+    "bookId": "7f97e283-e09f-41cc-91e0-35425d869e9c",
+    "authorId": "cdbe8c5e-76bb-48a2-bdb0-07f990ee2c8d",
+    "publisherId": "4c3c2ec0-4a79-4fba-988b-b2927d6d69d7",
+    "title": "To Kill a Mockingbird",
+    "publicationDate": "1960-07-11",
+    "isbn": "9780061120084",
+    "pages": 281,
+    "genre": "Fiction",
+    "description": "A story of racial injustice in the Deep South seen through the eyes of a young girl.",
+    "price": 10.99,
+    "quantity": 10
+  },
+  {
+    "bookId": "c0ffb497-3cf1-4c94-bb7f-6b4537b56d38",
+    "authorId": "3f7f1e87-02d1-4043-bd8a-825e24acb8e5",
+    "publisherId": "635c5a56-e4fc-4376-9701-3b7261b32c85",
+    "title": "Moby-Dick",
+    "publicationDate": "1851-10-18",
+    "isbn": "9781503280786",
+    "pages": 585,
+    "genre": "Adventure",
+    "description": "The epic tale of Captain Ahab's obsession with hunting the great white whale, Moby Dick.",
+    "price": 14.49,
+    "quantity": 3
+  },
+  {
+    "bookId": "cf21a87b-58e9-4e0d-bdb0-7f0a1c0a392b",
+    "authorId": "a4b0fd85-91a0-487b-a9de-d49e7a8b68e0",
+    "publisherId": "23323221-8b99-4b58-93c2-17950b789a4a",
+    "title": "Pride and Prejudice",
+    "publicationDate": "1813-01-28",
+    "isbn": "9780141040349",
+    "pages": 279,
+    "genre": "Romance",
+    "description": "A romantic novel about Elizabeth Bennet and her complicated relationship with the aloof Mr. Darcy.",
+    "price": 9.99,
+    "quantity": 6
+  }
+]
