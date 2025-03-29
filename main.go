@@ -1,4 +1,3 @@
-
 package main
 
 import (
@@ -8,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -88,6 +88,40 @@ func (b *Book) UnmarshalJSON(data []byte) error {
 	}
 	b.PublicationDate = parsedDate
 	return nil
+}
+
+// Function to handle searching books based on title and description
+func searchBooks(w http.ResponseWriter, r *http.Request) {
+	keyword := r.URL.Query().Get("q")
+	if keyword == "" {
+		http.Error(w, "No search keyword provided", http.StatusBadRequest)
+		return
+	}
+
+	// Read all books from file
+	books, err := readBooksFromFile()
+	if err != nil {
+		http.Error(w, "Could not read books data", http.StatusInternalServerError)
+		return
+	}
+
+	var results []Book
+	for _, book := range books {
+		// Check if the keyword exists in either title or description (case-insensitive)
+		if strings.Contains(strings.ToLower(book.Title), strings.ToLower(keyword)) ||
+			strings.Contains(strings.ToLower(book.Description), strings.ToLower(keyword)) {
+			results = append(results, book)
+		}
+	}
+
+	if len(results) == 0 {
+		http.Error(w, "No books found matching your search", http.StatusNotFound)
+		return
+	}
+
+	// Return the found books as a JSON response
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(results)
 }
 
 // Function to get all books
@@ -224,11 +258,33 @@ func deleteBook(w http.ResponseWriter, r *http.Request) {
 // Main function to set up the routes and start the server
 func main() {
 	r := mux.NewRouter()
+
+	// Root endpoint displaying welcome message and available endpoints
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		// Welcome message with the available endpoints
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintf(w, "Welcome to the Book API!\n")
+		fmt.Fprintf(w, "Here are the available endpoints:\n")
+		fmt.Fprintf(w, "- GET /books         - Get a list of all books\n")
+		fmt.Fprintf(w, "- POST /books        - Create a new book\n")
+		fmt.Fprintf(w, "- GET /books/{id}    - Get a single book by ID\n")
+		fmt.Fprintf(w, "- PUT /books/{id}    - Update a book by ID\n")
+		fmt.Fprintf(w, "- DELETE /books/{id} - Delete a book by ID\n")
+		fmt.Fprintf(w, "- GET /search        - Search books by title/description (use query parameter ?q=your_search_term)\n\n")
+		fmt.Fprintf(w, "Example:\n")
+		fmt.Fprintf(w, "GET /search?q=great (Enter Book Title) \n")
+	}).Methods("GET")
+
+	// Other existing routes for books and search
 	r.HandleFunc("/books", getBooks).Methods("GET")
 	r.HandleFunc("/books", createBook).Methods("POST")
 	r.HandleFunc("/books/{id}", getBook).Methods("GET")
 	r.HandleFunc("/books/{id}", updateBook).Methods("PUT")
 	r.HandleFunc("/books/{id}", deleteBook).Methods("DELETE")
+
+	// Add the search route
+	r.HandleFunc("/search", searchBooks).Methods("GET")
 
 	log.Println("Server starting on port 8081")
 	log.Fatal(http.ListenAndServe(":8081", r))
