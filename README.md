@@ -116,7 +116,6 @@ GET /search?q=great
 
 ## Search Optimization
 The search functionality leverages:
-- Goroutines for concurrent processing
 - Channels for efficient result collection
 - Optimized search across large datasets
 
@@ -180,7 +179,6 @@ This will return all books where the title or description contains the term "gre
 
 ## Notes
 - Designed as a demonstration of software engineering skills
-- Confidential assignment, not for public sharing
 
 ## Contact
 sachithsr953@gmail.com
