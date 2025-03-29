@@ -1,13 +1,14 @@
 # Book API - Software Engineering Intern Assignment
 
 ## Overview
-This is a robust REST API implemented in GoLang for managing a book collection. The application provides comprehensive book management capabilities with efficient search functionality.
+This is a robust REST API implemented in GoLang for managing a book collection. The application provides comprehensive book management capabilities with efficient search functionality and clear, structured endpoints for CRUD operations on books.
 
 ## Key Features
 - CRUD operations for book management
 - Concurrent search optimization
 - JSON-based data persistence
 - Docker and Kubernetes support
+- Root endpoint for easy access to available routes and instructions
 
 ## Technologies Used
 - GoLang (v1.21+)
@@ -86,6 +87,26 @@ minikube service book-api-service --url
 
 ## API Endpoints
 
+### Root Endpoint
+- `GET /`: Displays a welcome message and provides a list of available API endpoints.
+
+When you visit the root URL (`http://localhost:8081/`), the server will return a message with information about all the available endpoints.
+
+Example Response:
+```
+Welcome to the Book API!
+Here are the available endpoints:
+- GET /books         - Get a list of all books
+- POST /books        - Create a new book
+- GET /books/{id}    - Get a single book by ID
+- PUT /books/{id}    - Update a book by ID
+- DELETE /books/{id} - Delete a book by ID
+- GET /search        - Search books by title/description (use query parameter ?q=your_search_term)
+
+Example:
+GET /search?q=great
+```
+
 ### Book Operations
 - `POST /books`: Create a new book
 - `GET /books/{id}`: Retrieve a book by ID
@@ -113,7 +134,7 @@ The search functionality leverages:
     "description": "Set in the 1920s, this classic novel explores themes of wealth, love, and the American Dream.",
     "price": 15.99,
     "quantity": 5
-  }
+}
 ```
 
 ## Testing the API
@@ -137,6 +158,15 @@ curl -X POST http://localhost:8081/books \
 curl "http://localhost:8081/books/search?q=novel"
 ```
 
+#### Example for Searching Books by Keyword
+To search books by a keyword (for example, "great"):
+
+```bash
+curl "http://localhost:8081/search?q=great"
+```
+
+This will return all books where the title or description contains the term "great."
+
 ## Troubleshooting
 - Verify Go installation: `go version`
 - Ensure port 8081 is available
@@ -152,7 +182,5 @@ curl "http://localhost:8081/books/search?q=novel"
 - Designed as a demonstration of software engineering skills
 - Confidential assignment, not for public sharing
 
-
 ## Contact
 sachithsr953@gmail.com
-```
