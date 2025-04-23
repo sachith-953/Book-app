@@ -77,12 +77,13 @@ minikube start
 
 #### Deploy to Kubernetes
 ```bash
-kubectl apply -f k8s/
+kubectl apply -f deployment.yaml
+
 ```
 
 #### Access Kubernetes Service
 ```bash
-minikube service book-api-service --url
+kubectl apply -f service.yaml
 ```
 
 ## API Endpoints
