@@ -1,27 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: book-api-deployment
+  name: book-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: book-api
+      app: book-app
   template:
     metadata:
       labels:
-        app: book-api
+        app: book-app
     spec:
       containers:
-      - name: book-api
-        image: book-api:latest 
+      - name: book-app
+        image: book-app:latest
         ports:
         - containerPort: 8081
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
-
